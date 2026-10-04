@@ -1,6 +1,6 @@
 const btnWorkers = document.querySelector(".worker-list-button");
 const workersList = document.querySelector(".worker-list");
-const urlWorkers = "http://localhost:3000/api/workers/";
+const urlWorkers = "http://localhost:3000/api/workers";
 
 btnWorkers.addEventListener("click", async () => {
   try {

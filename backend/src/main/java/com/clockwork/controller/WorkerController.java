@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/workers")
+@CrossOrigin
 public class WorkerController {
     private final WorkerRepository workerRepository;
 

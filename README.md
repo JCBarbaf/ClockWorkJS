@@ -180,7 +180,7 @@ La API utiliza snake_case para los nombres de las propiedades JSON. Esta convers
 ```properties
 spring.jackson.property-naming-strategy=SNAKE_CASE
 ```
-Esto tranforma nuestros atributos de camelCase a snake_case siendolo que espera nuestro frontend.
+Esto tranforma nuestros atributos de camelCase a snake_case siendo lo que espera nuestro frontend.
 
 ### Obtener un trabajador por código de empleado
 ```text
