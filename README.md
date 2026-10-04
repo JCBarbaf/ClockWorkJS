@@ -142,6 +142,11 @@ En Java, las anotaciones (`@...`) permiten añadir información adicional al có
 * `@GetMapping` → indica que un método responde a peticiones GET.
 * `@PathVariable` → obtiene un valor de la URL.
 
+### Cors
+Dado que el front y el back se ejecutan en orígenes diferentes nos daba problemas encontramos una solución con la anotació:
+
+* `@CrossOrigin`permite que el navegador acepte peticiones realizadas desde un origen diferente al del backend.
+
 
 ## Base de datos
 
