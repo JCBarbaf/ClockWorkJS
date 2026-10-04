@@ -201,3 +201,23 @@ GET /api/workers
 
 Devuelve todos los trabajadores.
 
+## Fuentes y documentación
+
+* **Spring – Building REST services**
+  Tutorial oficial de Spring sobre creación de servicios REST, controladores y Spring Data.
+  https://spring.io/guides/tutorials/rest/
+
+* **Spring - Accessing Data with JPA**
+  Documentación oficial sobre Spring Data JPA y acceso a bases de datos mediante repositorios.
+  https://spring.io/guides/gs/accessing-data-jpa/
+
+* **Spring - CORS**
+  Documentación oficial sobre configuración de Cross-Origin
+  https://docs.spring.io/spring-framework/reference/web/webmvc-cors.html
+
+* **Jakarta Persistence (JPA)**
+  Documentación oficial de Jakarta Persistence, especificación utilizada para el mapeo entre objetos Java y bases de datos relacionales.
+  https://jakarta.ee/specifications/persistence/4.0/jakarta-persistence-spec-4.0-m4
+
+
+
