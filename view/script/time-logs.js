@@ -6,6 +6,7 @@ const urlWorkers = "http://localhost:3000/api/workers/";
 
 timeLogsButton.addEventListener('click', async (event) => {
     try {
+      
     const response = await fetch(urlTimeLogs);
 
     const timeLogs = await response.json();
@@ -20,7 +21,7 @@ timeLogsButton.addEventListener('click', async (event) => {
       console.log(log);
       li.classList.add('time-log');
       li.classList.add('list-item');
-      const typeClass = log.type === 'Clock-In' ? 'clock-in' : 'clock-out';
+      const typeClass = log.type === 'ClockIn' ? 'clockIn' : 'clockOut';
       li.classList.add(typeClass);
 
       const date = new Date(log.datetime);
@@ -30,7 +31,7 @@ timeLogsButton.addEventListener('click', async (event) => {
           timeStyle: "short",
         });
 
-      li.innerHTML = `<span>${log["employee_code"]}</span><span>${log.type === 'Clock-In' ? 'Entrada' : 'Salida'}</span>${formattedDate}`;
+      li.innerHTML = `<span>${log.worker["employeeCode"]}</span><span>${log.worker.firstName} ${log.worker.lastNames}</span><span>${log.type === 'ClockIn' ? 'Entrada' : 'Salida'}</span>${formattedDate}`;
 
       timeLogsList.appendChild(li);
     });

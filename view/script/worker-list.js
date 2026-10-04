@@ -15,7 +15,7 @@ btnWorkers.addEventListener("click", async () => {
 
       li.classList.add('worker-item');
       li.classList.add('list-item');
-      li.innerHTML = `<span>${worker.employee_code}</span> ${worker.first_name} ${worker.last_names}`;
+      li.innerHTML = `<span>${worker.employeeCode}</span> ${worker.firstName} ${worker.lastNames}`;
 
       workersList.appendChild(li);
     });

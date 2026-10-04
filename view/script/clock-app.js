@@ -29,18 +29,20 @@ employeeInput.addEventListener("input", () => {
 
       if (!response.ok) {
         message.classList.remove("success");
-        message.classList.add('error');
-        message.querySelector(".message").innerHTML = "Trabajador no encontrado";
+        message.classList.add("error");
+        message.querySelector(".message").innerHTML =
+          "Trabajador no encontrado";
         return;
       }
 
       const data = await response.json();
-      
+      console.log("DATA COMPLETA:", data);
 
       worker = data.worker;
       nextAction = data.nextAction;
+      console.log(nextAction);
 
-    //   clockButton.textContent = nextAction === "Clock-In" ? "Fichar entrada" : "Fichar salida";
+      //   clockButton.textContent = nextAction === "Clock-In" ? "Fichar entrada" : "Fichar salida";
 
       clockButton.disabled = false;
       if (data.lastLog) {
@@ -51,21 +53,24 @@ employeeInput.addEventListener("input", () => {
           timeStyle: "short",
         });
         const actionText =
-          data.lastLog.type === "Clock-In" ? "Entrada" : "Salida";
+          data.lastLog.type === "ClockIn" ? "Entrada" : "Salida";
 
         message.classList.remove("error");
         message.classList.add("success");
-        message.querySelector(".message").innerHTML = `Última ${actionText} - ${formattedDate}`;
+        message.querySelector(".message").innerHTML =
+          `Última ${actionText} - ${formattedDate}`;
       } else {
         message.classList.remove("success");
         message.classList.add("error");
-        message.querySelector(".message").innerHTML = "No tiene entradas o salidas anteriores";
+        message.querySelector(".message").innerHTML =
+          "No tiene entradas o salidas anteriores";
       }
     } catch (error) {
-        console.error(error);
-        message.classList.remove("success");
-        message.classList.add("error");
-        message.querySelector(".message").innerHTML = "Error al consultar el trabajador";
+      console.error(error);
+      message.classList.remove("success");
+      message.classList.add("error");
+      message.querySelector(".message").innerHTML =
+        "Error al consultar el trabajador";
     }
   }, 1500);
 });
@@ -88,11 +93,14 @@ clockButton.addEventListener("click", async () => {
     if (!response.ok) {
       throw new Error(data.error);
     }
-    const actionText = data.type === "Clock-In" ? "Entrada" : "Salida";
+    const actionText = data.type === "ClockIn" ? "Entrada" : "Salida";
     employeeInput.value = "";
     message.classList.remove("success");
-    message.classList.add('success');
-    message.querySelector(".message").innerHTML = data.type === "Clock-In" ? ` ${actionText} registrada` : ` ${actionText} registrada - ${data.sessionHours} trabajados - ${data.totalHours} en total`;
+    message.classList.add("success");
+    message.querySelector(".message").innerHTML =
+      data.type === "ClockIn"
+        ? ` ${actionText} registrada`
+        : ` ${actionText} registrada - ${data.sessionHours} trabajados - ${data.totalHours} en total`;
 
     clockButton.disabled = true;
   } catch (error) {
@@ -100,6 +108,7 @@ clockButton.addEventListener("click", async () => {
     employeeInput.value = "";
     message.classList.remove("success");
     message.classList.add("error");
-    message.querySelector(".message").innerHTML = "No se ha podido registrar la entrada";
+    message.querySelector(".message").innerHTML =
+      "No se ha podido registrar la entrada";
   }
 });

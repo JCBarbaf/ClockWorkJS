@@ -180,26 +180,133 @@ Desactiva la modificación automática de la base de datos.
 
 ## API
 
-La API utiliza snake_case para los nombres de las propiedades JSON. Esta conversión se configura mediante Jackson en application.properties:
+La API utilizaba snake_case para los nombres de las propiedades JSON. Esta conversión se configura mediante Jackson en application.properties:
 
 ```properties
 spring.jackson.property-naming-strategy=SNAKE_CASE
 ```
-Esto tranforma nuestros atributos de camelCase a snake_case siendo lo que espera nuestro frontend.
+Esto tranformaba nuestros atributos de camelCase a snake_case siendo lo que espera nuestro frontend.
+
+Finalmente decidimos volver al camelCase.
 
 ### Obtener un trabajador por código de empleado
 ```text
 GET /api/workers/{employee_code}
 ```
 
-Devuelve los datos del trabajador si existe.
+Devuelve los datos del trabajador si existe mediante su codigo de empleado. 
+
+La respuesta incluye, los datos del trabajor, la siguiente acción a realizar y el último fichaje realizado si existe.
+Ejemplo:
+
+{
+    "worker": {
+        "id": 2,
+        "employeeCode": "BBB424242",
+        "firstName": "Tamara",
+        "lastNames": "Fernandez Viturro",
+        "email": "tfernandezviturro@cifpfbmoll.eu"
+    },
+    "nextAction": "ClockOut",
+    "lastLog": {
+        "id": 5,
+        "type": "ClockIn",
+        "datetime": "2026-10-04T09:00:00"
+    }
+}
 
 ### Obtener todos los trabajadores
 
 ```text
 GET /api/workers
+```
 
 Devuelve todos los trabajadores.
+Ejemplo:
+
+[
+  {
+    "employeeCode": "AAA676769",
+    "firstName": "Juan Carlos",
+    "lastNames": "Barba Fernández",
+    "email": "jbarbafernandez@cifpfbmoll.eu",
+    "createdAt": "2026-10-04T16:28:53.409147",
+    "id": 1,
+    "updatedAt": "2026-10-04T16:28:53.409147"
+  },
+  {
+    "employeeCode": "BBB424242",
+    "firstName": "Tamara",
+    "lastNames": "Fernandez Viturro",
+    "email": "tfernandezviturro@cifpfbmoll.eu",
+    "createdAt": "2026-10-04T16:28:53.468098",
+    "id": 2,
+    "updatedAt": "2026-10-04T16:28:53.468098"
+  },
+  {
+    "employeeCode": "CCC111112",
+    "firstName": "Xavier",
+    "lastNames": "Sastre Flexas",
+    "email": "xsastref@cifpfbmoll.eu",
+    "createdAt": "2026-10-04T16:28:53.47305",
+    "id": 3,
+    "updatedAt": "2026-10-04T16:28:53.47305"
+  }
+]
+
+### Time Logs
+Obtener todos los fichajes
+
+```text
+GET /api/time-logs
+```
+Devuelve todos los fichajes registrados, ordenados por fecha de forma descendente.
+
+Cada fichaje contiene el trabajador, el tipo de fichaje y la fecha y hora.
+
+### Registrar un fichaje
+
+```text
+POST /api/time-logs
+```
+Registra un nuevo fichaje para un trabajador.
+
+El frontend envía:
+
+{
+    "workerId": 2,
+    "type": "ClockIn"
+}
+
+El backend obtiene la fecha y hora actual, crea el TimeLog y lo guarda en MariaDB.
+
+## Estado del proyecto
+
+### Implementado
+
+* [x] Frontend en HTML, CSS y JavaScript.
+* [x] Backend con Spring Boot.
+* [x] Conexión con MariaDB mediante Spring Data JPA.
+* [x] Entidad `Worker`.
+* [x] Entidad `TimeLog`.
+* [x] Repo `Worker`.
+* [x] Repo `TimeLog`.
+* [x] Controlador `Worker`.
+* [x] Controlador `TimeLog`.
+* [x] Inicialización de trabajadores de prueba.
+* [x] Consulta de trabajadores por código de empleado.
+* [x] Consulta del último fichaje.
+* [x] Registro de nuevos fichajes.
+* [x] Visualización de todos los fichajes.
+* [x] Ordenación de los fichajes por fecha.
+* [x] Configuración de CORS para la comunicación entre frontend y backend.
+
+### Pendiente
+
+* [ ] Cálculo de horas trabajadas.
+* [ ] Cálculo de horas diarias.
+* [ ] Consulta de Horas.
+* [ ] Validación.
 
 ## Fuentes y documentación
 
