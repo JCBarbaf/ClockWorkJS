@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "workers")
-public class worker {
+public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,11 +27,11 @@ public class worker {
     @Column(name = "email")
     private String email;
 
-    public worker(){
+    public Worker(){
 
     }
 
-    public worker(String employeeCode, String firstName, String lastNames, String email) {
+    public Worker(String employeeCode, String firstName, String lastNames, String email) {
     this.employeeCode = employeeCode;
     this.firstName = firstName;
     this.lastNames = lastNames;
