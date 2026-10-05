@@ -11,7 +11,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.clockwork.repository.TimeLogRepository;
 
-import java.util.Optional;
 import java.util.List;
 
 @RestController

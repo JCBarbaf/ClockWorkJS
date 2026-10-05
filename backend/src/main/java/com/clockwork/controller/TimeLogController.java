@@ -42,7 +42,7 @@ public class TimeLogController {
         Worker worker = workerRepository.findById(workerId)
          .orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
-                "Worker not found"
+                "Trabajador no encontrado."
         ));
         TimeLogType type = TimeLogType.valueOf((String) request.get("type"));
         TimeLog timeLog = new TimeLog(

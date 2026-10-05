@@ -50,6 +50,24 @@ El backend está desarrollado con Spring Boot y sigue una arquitectura por capas
 * `controller/` → endpoints de la API REST.
 * `config/` → configuración e inicialización de datos.
 
+## Iniciar el proyecto
+
+Utilizamos Maven Wrapper, por lo que no es necesario instalar Maven manualmente. Es necesario tener Java instalado y configurado.
+
+Para levantar el proyecto usamos los scripts que vienen en la plantilla desde la carpeta backend/, ejecutar:
+
+### Windows
+
+```text
+.\mvnw.cmd spring-boot:run
+```
+### Linux
+```text
+.\mvnw.cmd spring-boot:run
+```
+
+Y iniciará en: http://localhost:3000
+
 ### Entidades
 
 Actualmente existen las siguientes entidades:
@@ -191,7 +209,7 @@ Finalmente decidimos volver al camelCase.
 
 ### Obtener un trabajador por código de empleado
 ```text
-GET /api/workers/{employee_code}
+GET /api/workers/{employeeCode}
 ```
 
 Devuelve los datos del trabajador si existe mediante su codigo de empleado. 
@@ -280,33 +298,6 @@ El frontend envía:
 
 El backend obtiene la fecha y hora actual, crea el TimeLog y lo guarda en MariaDB.
 
-## Estado del proyecto
-
-### Implementado
-
-* [x] Frontend en HTML, CSS y JavaScript.
-* [x] Backend con Spring Boot.
-* [x] Conexión con MariaDB mediante Spring Data JPA.
-* [x] Entidad `Worker`.
-* [x] Entidad `TimeLog`.
-* [x] Repo `Worker`.
-* [x] Repo `TimeLog`.
-* [x] Controlador `Worker`.
-* [x] Controlador `TimeLog`.
-* [x] Inicialización de trabajadores de prueba.
-* [x] Consulta de trabajadores por código de empleado.
-* [x] Consulta del último fichaje.
-* [x] Registro de nuevos fichajes.
-* [x] Visualización de todos los fichajes.
-* [x] Ordenación de los fichajes por fecha.
-* [x] Configuración de CORS para la comunicación entre frontend y backend.
-
-### Pendiente
-
-* [ ] Cálculo de horas trabajadas.
-* [ ] Cálculo de horas diarias.
-* [ ] Consulta de Horas.
-* [ ] Validación.
 
 ## Fuentes y documentación
 
