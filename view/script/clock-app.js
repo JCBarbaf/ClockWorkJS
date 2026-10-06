@@ -95,7 +95,7 @@ clockButton.addEventListener("click", async () => {
     }
     const actionText = data.type === "ClockIn" ? "Entrada" : "Salida";
     employeeInput.value = "";
-    message.classList.remove("success");
+    message.classList.remove("error");
     message.classList.add("success");
     message.querySelector(".message").innerHTML =
       data.type === "ClockIn"
